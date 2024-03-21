@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<body class="text-bg-info">
+<h2 class="fw-bold text-success font-monospace">This is the records stored or saved for the companies employees.</h2>
+<a href="{% url 'employee_form' %}"><button class="btn btn-danger">ADD NEW EMPLOYEE</button></a>
+<table border="5" class="bg-info border-black ">
+    <thead class="fw-bold">
+    <tr>
+        <td>Full Name</td>
+        <td>Mobile</td>
+        <td>Position</td>
+    </tr>
+    </thead>
+    <tbody>
+    {% for employee in employee_list %}
+       <tr>
+           <td>{{employee.fullname}}</td>
+           <td>{{employee.mobile_no}}</td>
+           <td>{{employee.position}}</td>
+           <td>
+               <a href="{% url 'employee_update' employee.id %}"><button>UPDATE</button></a>
+               <a href="{% url 'employee_delete' employee.id %}"><button>DELETE</button></a>
+           </td>
+       </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+{% endblock %}
